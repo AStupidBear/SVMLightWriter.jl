@@ -1,0 +1,10 @@
+name = "SVMLightWriter"
+uuid = "b51eda20-e6c3-11e9-27c2-99820284193b"
+authors = ["Yao Lu <luyaocns@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
