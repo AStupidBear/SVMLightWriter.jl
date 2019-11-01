@@ -1,9 +1,19 @@
 using SVMLightWriter
+using SparseArrays
 using Test
 
-x = [1 2; 3 4]
+x = [0 2; 3.1 4.2]
+x_sp = sparse(x)
 y = [1, -1]
-f = IOBuffer()
-dump_svmlight_file(x, y, f)
-str = String(take!(f))
-@test str == "1 0:1.00 1:3.00\n-1 0:2.00 1:4.00\n"
+io = IOBuffer()
+str = "1 1:3.1\n-1 0:2 1:4.2\n"
+
+dump_svmlight_file(x, y, io)
+@test String(take!(io)) == str
+
+dump_svmlight_file(x, y, "tmp")
+@test read("tmp", String) == str
+rm("tmp", force = true)
+
+dump_svmlight_file(x_sp, y, io)
+@test String(take!(io)) == str

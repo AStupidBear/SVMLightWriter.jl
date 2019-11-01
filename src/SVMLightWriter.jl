@@ -1,6 +1,6 @@
 module SVMLightWriter
 
-using Printf, SparseArrays, PyCall, ProgressMeter
+using Printf, SparseArrays, Requires, ProgressMeter
 
 export dump_svmlight_file
 
@@ -12,9 +12,11 @@ function dump_svmlight_file(x::AbstractArray, y, f::IO; zero_based = true, query
         print(f, y[j])
         noqid || print(f, " qid:", query_id[j])
         for i in 1:size(x, 1)
+            v = x[i, j]
+            iszero(v) && continue
             i′ = ifelse(zero_based, i - 1, i)
             print(f, ' ', i′, ':')
-            @printf(f, "%.2f", x[i, j])
+            @printf(f, "%.4g", v)
         end
         println(f)
     end
@@ -41,7 +43,9 @@ dump_svmlight_file(x, y, file::String; ka...) = open(file, "w") do f
     dump_svmlight_file(x, y, f; ka...)
 end
 
-dump_svmlight_file(x::PyObject, a...; ka...) =
-    pyimport("sklearn.datasets").dump_svmlight_file(x, a..., ka...)
+@init @require PyCall="438e738f-606a-5dbb-bf0a-cddfbfd45ab0" begin
+dump_svmlight_file(x::PyCall.PyObject, a...; ka...) =
+    PyCall.pyimport("sklearn.datasets").dump_svmlight_file(x, a..., ka...)
+end
 
 end # module
