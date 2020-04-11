@@ -1,7 +1,7 @@
 name = "SVMLightWriter"
 uuid = "b51eda20-e6c3-11e9-27c2-99820284193b"
 authors = ["Yao Lu <luyaocns@gmail.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
@@ -11,7 +11,7 @@ SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 
 [compat]
 ProgressMeter = "1"
-Requires = "0.5"
+Requires = "0.5, 1"
 julia = "1"
 
 [extras]
