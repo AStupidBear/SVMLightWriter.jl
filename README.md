@@ -1,5 +1,9 @@
 # Lightning-fast svmlight writer
 
+[![Build Status](https://travis-ci.com/AStupidBear/SVMLightWriter.jl.svg?branch=master)](https://travis-ci.com/AStupidBear/SVMLightWriter.jl)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/AStupidBear/SVMLightWriter.jl?svg=true)](https://ci.appveyor.com/project/AStupidBear/SVMLightWriter-jl)
+[![Coverage](https://codecov.io/gh/AStupidBear/SVMLightWriter.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/AStupidBear/SVMLightWriter.jl)
+
 ## Installation
 
 ```julia
